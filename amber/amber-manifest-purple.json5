@@ -8,23 +8,20 @@
       "--host", 
       "0.0.0.0", 
       "--port", 
-      "8080",
-      "--card-url",
-      "http://purple-agent:8080"
+      "8080"
     ],
     env: {
       LLM_PROVIDER: "${config.llm_provider}",
       ANTHROPIC_API_KEY: "${config.anthropic_api_key}",
       ANTHROPIC_MODEL: "${config.anthropic_model}",
       ENABLE_WEB_SEARCH: "${config.enable_web_search}",
-      PROXY_URL: "${slots.proxy.url}",
       LOG_LEVEL: "INFO"
     },
     network: {
       endpoints: [
-        { name: "endpoint", port: 8080 },
-      ],
-    },
+        { name: "endpoint", port: 8080 }
+      ]
+    }
   },
   config_schema: {
     type: "object",
@@ -32,18 +29,15 @@
       anthropic_api_key: { type: "string", secret: true },
       llm_provider: { type: "string" },
       anthropic_model: { type: "string" },
-      enable_web_search: { type: "string" },
+      enable_web_search: { type: "string" }
     },
     required: ["anthropic_api_key", "llm_provider", "anthropic_model", "enable_web_search"],
-    additionalProperties: false,
-  },
-  slots: {
-    proxy: { kind: "a2a" },
+    additionalProperties: false
   },
   provides: {
-    a2a: { kind: "a2a", endpoint: "endpoint" },
+    a2a: { kind: "a2a", endpoint: "endpoint" }
   },
   exports: {
-    a2a: "a2a",
-  },
+    a2a: "a2a"
+  }
 }

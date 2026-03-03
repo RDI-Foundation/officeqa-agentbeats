@@ -3,10 +3,10 @@
   config_schema: {
     type: "object",
     properties: {
-      anthropic_api_key: { type: "string", secret: true },
+      anthropic_api_key: { type: "string", secret: true }
     },
     required: ["anthropic_api_key"],
-    additionalProperties: false,
+    additionalProperties: false
   },
   components: {
     gateway: {
@@ -17,20 +17,20 @@
           num_questions: 246,
           difficulty: "all",
           tolerance: 0.0,
-          run_id: 3,
+          run_id: 3
         },
         participant_roles: {
           green: "evaluator",
-          purple1: "officeqa_agent",
+          purple1: "officeqa_agent"
         },
         callback_urls: {
-          green: "${bindings.green-proxy.url}",
-        },
-      },
+          green: "${bindings.green-proxy.url}"
+        }
+      }
     },
     green: {
       manifest: "./amber-manifest-green.json5",
-      config: {},
+      config: {}
     },
     purple_agent: {
       manifest: "./amber-manifest-purple.json5",
@@ -38,15 +38,14 @@
         anthropic_api_key: "${config.anthropic_api_key}",
         llm_provider: "anthropic",
         anthropic_model: "claude-opus-4-5-20251101",
-        enable_web_search: "true",
-      },
-    },
+        enable_web_search: "true"
+      }
+    }
   },
   bindings: [
     { to: "#gateway.green", from: "#green.a2a" },
     { to: "#gateway.purple1", from: "#purple_agent.a2a" },
-    { to: "#green.proxy", from: "#gateway.proxy", weak: true, name: "green-proxy" },
-    { to: "#purple_agent.proxy", from: "#green.a2a" },
+    { to: "#green.proxy", from: "#gateway.proxy", weak: true, name: "green-proxy" }
   ],
-  exports: { results: "#gateway.results" },
+  exports: { results: "#gateway.results" }
 }
