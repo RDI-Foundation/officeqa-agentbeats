@@ -13,7 +13,7 @@
       manifest: "https://raw.githubusercontent.com/RDI-Foundation/agentbeats-gateway/refs/heads/main/amber-manifest.json5",
       config: {
         assessment_config: {
-          dataset_url: "https://raw.githubusercontent.com/databricks/officeqa/main/officeqa.csv",
+          dataset_url: "https://raw.githubusercontent.com/databricks/officeqa/6aa8c32/officeqa.csv",
           num_questions: 246,
           difficulty: "all",
           tolerance: 0.0,
