@@ -387,6 +387,11 @@ class OfficeQAAgent:
             if len(questions) >= num_questions:
                 break
 
+        shard_index = config.get("shard_index")
+        num_shards = config.get("num_shards")
+        if num_shards is not None and num_shards > 1 and shard_index is not None:
+            questions = questions[shard_index::num_shards]
+
         return questions
 
     async def _emit_status(
