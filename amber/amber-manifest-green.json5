@@ -1,7 +1,7 @@
 {
   manifest_version: "0.1.0",
   program: {
-    image: "ghcr.io/Andrew7234/officeqa-agentbeats:latest",
+    image: "ghcr.io/andrew7234/officeqa-agentbeats:latest",
     entrypoint: [
       "python",
       "server.py",
