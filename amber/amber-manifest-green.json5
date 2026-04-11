@@ -42,6 +42,7 @@
       "num_questions": 246,
       "difficulty": "all",
       "tolerance": 0.0,
+      "max_concurrent": 10,
       "run_id": 3
     },
     participant_roles: ["officeqa_agent"]

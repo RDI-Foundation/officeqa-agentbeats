@@ -550,6 +550,8 @@ class OfficeQAAgent:
             f"Evaluating agent at {agent_url} on {len(questions)} questions..."
         )
 
+        max_concurrent = int(config.get("max_concurrent", 10))
+
         results = await self.evaluate_agent(
             agent_url=agent_url,
             questions=questions,
@@ -557,6 +559,7 @@ class OfficeQAAgent:
             event_queue=event_queue,
             task_id=task_id,
             context_id=context_id,
+            max_concurrent=max_concurrent,
         )
 
         summary = f"""OfficeQA Evaluation Complete
